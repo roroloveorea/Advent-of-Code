@@ -17,20 +17,21 @@ def find_hand(hands):
     # item_dict = sorted(item_dict.items(), key=lambda x:x[1], reverse=True)  
     item_dict={k: v for k, v in sorted(item_dict.items(), key=lambda item: item[1],reverse=True)}
     print(item_dict)
-
-    # if "J" in item_dict:
+    # if first in list is more than 2, add j to that
+    if "J" in item_dict:
         
-    #     value = item_dict["J"]
-    #     item_dict.pop("J", None)
-    #     if item_dict:
-    #         first_key = next(iter(item_dict))
-    #         item_dict[first_key] = item_dict[first_key] + value
+        value = item_dict["J"]
+        item_dict.pop("J", None)
+        if item_dict:
+            first_key = next(iter(item_dict))
+            item_dict[first_key] = item_dict[first_key] + value
             
-    #     else:
-    #         first_key = "2"
-    #         item_dict[first_key] = value
+        else:
+            first_key = "2"
+            item_dict[first_key] = value
         
         
+    # if first in list is 2 then compare if second in list is also two
     
     if len(item_dict) == 1:
         return 7
@@ -54,7 +55,7 @@ def find_order(hands):
     "A":13, 
     "K":12, 
     "Q":11, 
-    "J":10, 
+    # "J":10, 
     "T":9, 
     "9":8, 
     "8":7, 
@@ -63,8 +64,8 @@ def find_order(hands):
     "5":4, 
     "4":3, 
     "3":2,
-    "2":1
-    # "J":0
+    "2":1,
+    "J":0
 }
     list = []
     for i in hands:
